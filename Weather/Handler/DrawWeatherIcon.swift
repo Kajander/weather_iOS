@@ -17,15 +17,14 @@ class DrawWeatherIcon {
     let wind = Wind()
     let cloudAndSun = CloudAndSun()
     let cloudAndMoon = CloudAndMoon()
-    
     let weatherIconShapeLayer = CAShapeLayer()
     
+    
+    //MARK: - Draw requested icon
     func drawIcon(icon: String) -> CAShapeLayer {
         
-
         let iconRect = CGRect(x: 0, y: 0, width: 0, height: 0)
 
-        
         switch icon {
             
         case let icon where icon == "clear-day":
@@ -46,7 +45,6 @@ class DrawWeatherIcon {
             let lightRainShapeLayer = rain.drawLightRain(iconRect)
             weatherIconShapeLayer.addSublayer(cloudShapeLayer)
             weatherIconShapeLayer.addSublayer(lightRainShapeLayer)
-            
             
         case let icon where icon == "snow":
             print("Draw snow")

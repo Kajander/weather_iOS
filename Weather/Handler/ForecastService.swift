@@ -19,7 +19,6 @@ class ForecastService {
         forecastBaseURL = URL(string: "https://api.darksky.net/forecast/\(APIKey)")
     }
     
-    
     func getForecast(latitude: Double, longitude: Double, completion: @escaping (CurrentWeather?, HourlyWeather?, DailyWeather?) -> Void) {
         
         if let forecastURL = URL(string: "\(forecastBaseURL!)/\(latitude),\(longitude)") {
@@ -90,6 +89,3 @@ class ForecastService {
         }
     }
 }
-
-
-// Write this class so it uses only one method for the required information.

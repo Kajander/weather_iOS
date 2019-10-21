@@ -8,10 +8,11 @@
 
 import Foundation
 
+//TODO: This will have the methods for requesting weather from 'ForecastService'
+
 class WeatherDataHandler {
     
     let forecastAPIKey = "19ccd835b03c00a15c7e1cba45c64892"
     
-    // This will handle getting the data. No need to keep that code in viewControllers
     
 }

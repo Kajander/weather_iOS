@@ -12,8 +12,6 @@ import CoreLocation
 import CoreData
 
 
-
-
 class MainViewController: UIViewController, UISearchBarDelegate {
     
     var searchedLocation = ""
@@ -53,7 +51,7 @@ class MainViewController: UIViewController, UISearchBarDelegate {
     
     
     
-    //MARK: - Setup view
+    //MARK: - Setup
     
     func setupAddButton() {
         
@@ -75,7 +73,6 @@ class MainViewController: UIViewController, UISearchBarDelegate {
         blur.addGestureRecognizer(blurTap)
         
         view.bringSubviewToFront(addButton)
-        //view.bringSubviewToFront(searhBarView)
         view.bringSubviewToFront(locationSearchBar)
         
     }
@@ -167,7 +164,7 @@ class MainViewController: UIViewController, UISearchBarDelegate {
     //MARK: - SearchBar
     
     
-    //    //TODO: - Handle textDidChange
+    //    //TODO: - Handle textDidChange: Implement Googles api for suggesting locations
     //    func searchBar(_ searchBar: UISearchBar, textDidChange: String) {
     //
     //
@@ -372,7 +369,7 @@ class MainViewController: UIViewController, UISearchBarDelegate {
     }
     
     //MARK: Load locations
-    
+    //TODO: Build the whole thing so that it loads all the locations from CoreData and creates weatherview for them and fills them with CURRENT weatherdata
     func loadLocations() {
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -404,7 +401,7 @@ class MainViewController: UIViewController, UISearchBarDelegate {
     //MARK: - OnTap of WeatherView
     @objc func onTap() {
         
-        
+        //TODO:- Ugly and unpractical, rework this whole thing. Example pass whole weatherobject instead of all these separately
         let spinViewController = SpinViewController()
         spinViewController.longitude = self.coordinate.long
         spinViewController.latitude = self.coordinate.lat
