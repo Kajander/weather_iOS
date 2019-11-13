@@ -28,9 +28,8 @@ class SimpleWeatherView: UIView {
     
     func setupView() {
         
+        setShadow()
         backgroundColor = .clear
-        //setShadow()
-        
     }
     
     //MARK: Shadow
@@ -39,8 +38,9 @@ class SimpleWeatherView: UIView {
         
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOffset = CGSize(width: 2, height: 2)
-        layer.shadowOpacity = 1.0
-        layer.shadowRadius = 2
+        layer.shadowOpacity = 1
+        layer.shadowRadius = 4
+
    
     }
     
@@ -49,7 +49,7 @@ class SimpleWeatherView: UIView {
     func setupTempLabel(temp: String) {
         temperatureLabel.frame = CGRect(x: 30, y: 30, width: 80, height: 30)
         temperatureLabel.font = UIFont (name: "SFCompactText-Bold", size: 20)
-        temperatureLabel.textColor = UIColor.black
+        temperatureLabel.textColor = UIColor.white
         temperatureLabel.text = "\(temp) °C"
         addSubview(temperatureLabel)
         
@@ -64,7 +64,7 @@ class SimpleWeatherView: UIView {
         
         locLabel.frame = CGRect(x: 110, y: 30, width: 160, height: 30)
         locLabel.font = UIFont (name: "SFCompactText-Bold", size: 20)
-        locLabel.textColor = UIColor.black
+        locLabel.textColor = UIColor.white
         locLabel.text = loc.uppercased()
         addSubview(locLabel)
         
@@ -93,7 +93,7 @@ class SimpleWeatherView: UIView {
     override func draw(_ rect: CGRect) {
 
         let roundedRect = UIBezierPath(roundedRect: rect, cornerRadius: 10)
-        UIColor.clear.setFill()
+        UIColor(red:0.42, green:0.86, blue:0.55, alpha:1.0).setFill()
         roundedRect.fill()
         
 //        let darkGreen = DarkGreen()
@@ -101,13 +101,4 @@ class SimpleWeatherView: UIView {
 
     }
     
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
 }

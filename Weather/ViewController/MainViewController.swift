@@ -19,6 +19,8 @@ class MainViewController: UIViewController, UISearchBarDelegate {
     let addButton = AddButton()
     let locationSearchBar = LocationSearchBar()
     
+    let stackView = UIStackView()
+    
     var coordinate: (lat: Double, long: Double) = (0.0,0.0)
     var long: Double = 0.0
     var lat: Double = 0.0
@@ -40,6 +42,9 @@ class MainViewController: UIViewController, UISearchBarDelegate {
         let textFieldAppearance = UITextField.appearance()
         textFieldAppearance.keyboardAppearance = .dark
         view.backgroundColor = .white
+        
+        setupBackGround()
+        setupStackView()
         setupAddButton()
 
         
@@ -53,6 +58,37 @@ class MainViewController: UIViewController, UISearchBarDelegate {
     
     //MARK: - Setup
     
+    
+    func setupBackGround() {
+        
+        let backGroundView = MainBackgroundView()
+        backGroundView.frame = CGRect(x: view.frame.origin.x, y: view.frame.origin.y, width: view.frame.width, height: view.frame.height)
+        backGroundView.backgroundColor = UIColor.white
+        backGroundView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(backGroundView)
+        backGroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        backGroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        backGroundView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        backGroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+    }
+    
+    func setupStackView() {
+        
+        stackView.axis = NSLayoutConstraint.Axis.vertical
+        stackView.distribution = UIStackView.Distribution.equalSpacing
+        stackView.alignment = UIStackView.Alignment.center
+        stackView.spacing = 26.0
+        
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(stackView)
+
+        //Constraints
+        stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 250).isActive = true
+        //stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
+        
+    }
     func setupAddButton() {
         
         addButton.translatesAutoresizingMaskIntoConstraints = false
@@ -95,6 +131,7 @@ class MainViewController: UIViewController, UISearchBarDelegate {
     
     //MARK:- Handle adding and removing searhBar
     func removeSearch() {
+        locationSearchBar.text = ""
         removeAfterCancelOrSearch()
         animateButton(bool: !isOn)
     }
@@ -144,16 +181,25 @@ class MainViewController: UIViewController, UISearchBarDelegate {
         isOn = bool
         
         if isOn == true {
-            UIView.animate(withDuration: 0.3, delay: 0.1, options: .curveEaseInOut, animations: {
+            UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseInOut, animations: {
                 self.addButton.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi / 4))
                 self.view.layoutIfNeeded()
             }, completion: nil)
+            
+            UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseInOut, animations: {
+                self.addButton.plusShapeLayer.strokeColor = UIColor(red:0.86, green:0.20, blue:0.24, alpha:1.0).cgColor
+            }, completion: nil)
         }
         
+        
         if isOn == false {
-            UIView.animate(withDuration: 0.3, delay: 0.1, options: .curveEaseInOut, animations: {
+            UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseInOut, animations: {
                 self.addButton.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi * 2))
                 self.view.layoutIfNeeded()
+            }, completion: nil)
+            
+            UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseInOut, animations: {
+                self.addButton.plusShapeLayer.strokeColor = UIColor(red:0.35, green:0.71, blue:0.56, alpha:1.0).cgColor
             }, completion: nil)
         }
     }
@@ -242,12 +288,10 @@ class MainViewController: UIViewController, UISearchBarDelegate {
                     if let temperature = currentWeatherValues.temperature {
                         let celciusTemperatureDouble = (temperature - 32) * 5 / 9
                         tempString = NSString(format: "%.1f", celciusTemperatureDouble) as String
-                        print("temppistringgi",tempString)
                     }
                     
                     if let icon = currentWeatherValues.icon {
                         iconString = icon
-                        print("iconiii",iconString)
                     }
                     
                     if tempString != "" && iconString != "" && counter < 1 {
@@ -318,25 +362,18 @@ class MainViewController: UIViewController, UISearchBarDelegate {
         
         let simpleWeatherView = SimpleWeatherView()
         
-        simpleWeatherView.layer.borderColor = UIColor.black.cgColor
-        simpleWeatherView.layer.borderWidth = 2
-        simpleWeatherView.layer.cornerRadius = 10
-        
-        // UICOllectionview seteiks tais mennä? tää https://www.raywenderlich.com/9334-uicollectionview-tutorial-getting-started
         simpleWeatherView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(simpleWeatherView)
+        stackView.addArrangedSubview(simpleWeatherView)
         
         simpleWeatherView.setupTempLabel(temp: temp)
         simpleWeatherView.setupLocLabel(loc: searchedLocation)
         simpleWeatherView.setupIcon(icon: icon)
         
-        simpleWeatherView.topAnchor.constraint(equalTo: view.topAnchor, constant: 250).isActive = true
-        simpleWeatherView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
-        simpleWeatherView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
+        simpleWeatherView.widthAnchor.constraint(equalToConstant: 300).isActive = true
         simpleWeatherView.heightAnchor.constraint(equalToConstant: 80).isActive = true
         
         let viewTapRecognizer = UITapGestureRecognizer(target:self,action:#selector(self.onTap))
-        viewTapRecognizer.numberOfTapsRequired = 1;
+        viewTapRecognizer.numberOfTapsRequired = 1
         simpleWeatherView.addGestureRecognizer(viewTapRecognizer)
         
         

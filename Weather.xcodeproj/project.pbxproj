@@ -24,6 +24,7 @@
 		EA8AF839223A9E7A000A1752 /* DailyWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8AF838223A9E7A000A1752 /* DailyWeather.swift */; };
 		EAA0843B23192C16009E491C /* SimpleWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA0843A23192C16009E491C /* SimpleWeatherView.swift */; };
 		EAA6E2732232A1A00007284A /* SFCompactText-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EAA6E2722232A1A00007284A /* SFCompactText-Bold.otf */; };
+		EAA92249237AD44000802E99 /* MainBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA92248237AD44000802E99 /* MainBackgroundView.swift */; };
 		EAAD0E3F224BE75D0042A6D8 /* Sun.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD0E3E224BE75D0042A6D8 /* Sun.swift */; };
 		EAAD0E45224CE1F80042A6D8 /* HourlyWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD0E44224CE1F80042A6D8 /* HourlyWeather.swift */; };
 		EAAF9FBB221C142800BA1651 /* NetworkProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF9FBA221C142800BA1651 /* NetworkProcessor.swift */; };
@@ -68,6 +69,7 @@
 		EA8AF838223A9E7A000A1752 /* DailyWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyWeather.swift; sourceTree = "<group>"; };
 		EAA0843A23192C16009E491C /* SimpleWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleWeatherView.swift; sourceTree = "<group>"; };
 		EAA6E2722232A1A00007284A /* SFCompactText-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFCompactText-Bold.otf"; sourceTree = "<group>"; };
+		EAA92248237AD44000802E99 /* MainBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBackgroundView.swift; sourceTree = "<group>"; };
 		EAAD0E3E224BE75D0042A6D8 /* Sun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sun.swift; sourceTree = "<group>"; };
 		EAAD0E44224CE1F80042A6D8 /* HourlyWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyWeather.swift; sourceTree = "<group>"; };
 		EAAF9FBA221C142800BA1651 /* NetworkProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkProcessor.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				EA84C2AD233525A10077F822 /* DetailView.swift */,
 				EAE014992347D47600F56769 /* BlurEffectView.swift */,
 				EA1B66CB234B606D0061E388 /* SearchBarView.swift */,
+				EAA92248237AD44000802E99 /* MainBackgroundView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 				EA3A6D80235C6EFA0079E354 /* WeatherDelegate.swift in Sources */,
 				EAD6C206224FBC8900385605 /* CloudAndSun.swift in Sources */,
 				EAD1728C22522B45001AA23F /* HourlyGradientLayer.swift in Sources */,
+				EAA92249237AD44000802E99 /* MainBackgroundView.swift in Sources */,
 				EA833E3A231C2E9900A9310C /* WeatherDataHandler.swift in Sources */,
 				EAF0AB43232936B5007C9CAC /* ReverseLocation.swift in Sources */,
 				EA833E3E231D336A00A9310C /* SpinViewController.swift in Sources */,

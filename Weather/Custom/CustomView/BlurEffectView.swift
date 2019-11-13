@@ -24,7 +24,7 @@ class BlurEffectView: UIVisualEffectView {
     
     func setupBlurView() {
         
-        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.extraLight)
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
         self.effect = blurEffect
         self.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 

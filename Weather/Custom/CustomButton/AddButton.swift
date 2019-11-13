@@ -12,16 +12,33 @@ class AddButton: UIButton {
     
     var width: CGFloat
     var height: CGFloat
+    let roundedRectLayer: CAShapeLayer
+    let plusShapeLayer: CAShapeLayer
+
+
     
     override init(frame: CGRect) {
         width = 40
         height = 40
+        roundedRectLayer = CAShapeLayer()
+        plusShapeLayer = CAShapeLayer()
+
         super.init(frame: frame)
-        
+        setupButton()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    func setupButton() {
+        backgroundColor = .clear
+        
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOffset = CGSize(width: 1, height: 1)
+        layer.shadowOpacity = 0.5
+        layer.shadowRadius = 3
     }
     
     override func draw(_ rect: CGRect) {
@@ -30,7 +47,6 @@ class AddButton: UIButton {
         let newRect = CGRect(x: 0, y: 0, width: width, height: height)
         
         let buttonPath = UIBezierPath()
-        let plusShapeLayer = CAShapeLayer()
         
         let firstPoint = CGPoint(x: newRect.width / 5 * 1, y: newRect.height / 2)
         let secondPoint = CGPoint(x: newRect.width / 5 * 4 , y: newRect.height / 2)
@@ -42,17 +58,16 @@ class AddButton: UIButton {
         buttonPath.addLine(to: fourthPoint)
         
         plusShapeLayer.path = buttonPath.cgPath
-        plusShapeLayer.lineWidth = 3
+        plusShapeLayer.lineWidth = 4
         plusShapeLayer.lineCap = .round
         plusShapeLayer.lineJoin = .round
-        plusShapeLayer.strokeColor = UIColor(red:0.73, green:0.73, blue:0.73, alpha:1.0).cgColor
+        plusShapeLayer.strokeColor = UIColor(red:0.35, green:0.71, blue:0.56, alpha:1.0).cgColor
         plusShapeLayer.fillColor = UIColor.clear.cgColor
         
         let roundedRectPath = UIBezierPath(roundedRect: newRect, cornerRadius: 5)
-        let roundedRectLayer = CAShapeLayer()
         
         roundedRectLayer.path = roundedRectPath.cgPath
-        roundedRectLayer.fillColor = UIColor(red:0.93, green:0.93, blue:0.93, alpha:1.0).cgColor
+        roundedRectLayer.fillColor = UIColor.white.cgColor
         
         layer.addSublayer(roundedRectLayer)
         layer.addSublayer(plusShapeLayer)
