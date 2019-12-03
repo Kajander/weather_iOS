@@ -52,6 +52,9 @@ class WeekViewController: UIViewController {
         scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         scrollView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         scrollView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
+        
+        setupContentView()
+
     }
     
     func setupBackround() {
@@ -84,7 +87,6 @@ class WeekViewController: UIViewController {
         sceneView.clipsToBounds = true
         sceneView.backgroundColor = UIColor(red:0.08, green:0.60, blue:0.54, alpha:1.0)
         
-        setupContentView()
         setupTimeSlider()
         setupTempLabel()
         setupSummaryLabel()
@@ -107,7 +109,6 @@ class WeekViewController: UIViewController {
         contentView.layer.masksToBounds = false
         contentView.backgroundColor = UIColor.darkGray
         
-        
     }
     
     //MARK: DetailView
@@ -127,7 +128,6 @@ class WeekViewController: UIViewController {
         detailView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         detailView.heightAnchor.constraint(equalToConstant: 600).isActive = true
         detailView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
-        
         
     }
     

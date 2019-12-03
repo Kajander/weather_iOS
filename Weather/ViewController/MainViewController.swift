@@ -14,37 +14,22 @@ import CoreData
 
 class MainViewController: UIViewController, UISearchBarDelegate {
     
-    var searchedLocation = ""
-    
     let addButton = AddButton()
     let locationSearchBar = LocationSearchBar()
     
     let stackView = UIStackView()
     
-    var coordinate: (lat: Double, long: Double) = (0.0,0.0)
-    var long: Double = 0.0
-    var lat: Double = 0.0
-    
-    var sunriseList = [Date]()
-    var sunsetList = [Date]()
-    var dailyTimeList = [Date]()
-    var dailyIconList = [String]()
-    var dailyMinTemp = [String]()
-    var dailyMaxTemp = [String]()
-    
+    var longitude: CLLocationDegrees = 0.0
+    var latitude: CLLocationDegrees = 0.0
+        
     var isOn = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let textFieldAppearance = UITextField.appearance()
-        textFieldAppearance.keyboardAppearance = .dark
-        view.backgroundColor = .white
-        
-        setupBackGround()
+                
+        setupBackground()
         setupStackView()
         setupAddButton()
-
         
     }
     
@@ -55,9 +40,7 @@ class MainViewController: UIViewController, UISearchBarDelegate {
     
     
     //MARK: - Setup
-    
-    
-    func setupBackGround() {
+    func setupBackground() {
         
         let backGroundView = MainBackgroundView()
         backGroundView.frame = CGRect(x: view.frame.origin.x, y: view.frame.origin.y, width: view.frame.width, height: view.frame.height)
@@ -208,7 +191,7 @@ class MainViewController: UIViewController, UISearchBarDelegate {
     //MARK: - SearchBar
     
     
-    //    //TODO: - Handle textDidChange: Implement Googles api for suggesting locations
+    //    //TODO: - Handle textDidChange: Implement Google api for suggesting locations
     //    func searchBar(_ searchBar: UISearchBar, textDidChange: String) {
     //
     //
@@ -243,15 +226,15 @@ class MainViewController: UIViewController, UISearchBarDelegate {
             if response != nil {
                 
                 // Get latitude and longitude from the location user has entered
-                let latitude = response?.mapItems.first?.placemark.coordinate.latitude
-                let longitude = response?.mapItems.first?.placemark.coordinate.longitude
+                let searchedLatitude = response?.mapItems.first?.placemark.coordinate.latitude
+                let searchedLongitude = response?.mapItems.first?.placemark.coordinate.longitude
                 
-                self.coordinate.lat = latitude!
-                self.coordinate.long = longitude!
-                self.searchedLocation = searchBar.text!
+                //TODO:- Fix this forcewrap
+                self.latitude = searchedLatitude!
+                self.longitude = searchedLongitude!
                 
                 // Get weather information needed for the weatherView
-                self.getWeather(latitude: latitude!, longitude: longitude!)
+                self.getWeather(latitude: searchedLatitude!, longitude: searchedLongitude!)
                 
                 
                 self.removeSearch()
@@ -311,13 +294,15 @@ class MainViewController: UIViewController, UISearchBarDelegate {
     //MARK: - WeatherView
     func createWeatherView(temp: String, icon: String) {
         
+        let coordinates = CLLocation(latitude: latitude, longitude: longitude)
+        
         let simpleWeatherView = SimpleWeatherView()
         
         simpleWeatherView.translatesAutoresizingMaskIntoConstraints = false
         stackView.addArrangedSubview(simpleWeatherView)
         
         simpleWeatherView.setupTempLabel(temp: temp)
-        simpleWeatherView.setupLocLabel(loc: searchedLocation)
+        simpleWeatherView.setupLocLabel(location: coordinates)
         simpleWeatherView.setupIcon(icon: icon)
         
         simpleWeatherView.widthAnchor.constraint(equalToConstant: 300).isActive = true
@@ -326,9 +311,6 @@ class MainViewController: UIViewController, UISearchBarDelegate {
         let viewTapRecognizer = UITapGestureRecognizer(target:self,action:#selector(self.onTap))
         viewTapRecognizer.numberOfTapsRequired = 1
         simpleWeatherView.addGestureRecognizer(viewTapRecognizer)
-        
-        
-        
         
     }
     
@@ -357,7 +339,7 @@ class MainViewController: UIViewController, UISearchBarDelegate {
     }
     
     //MARK: Load locations
-    //TODO: Build the whole thing so that it loads all the locations from CoreData and creates weatherview for them and fills them with CURRENT weatherdata
+    //TODO: Build the whole thing so that it loads all the locations from CoreData and creates weatherview from that data and fills them with CURRENT weatherdata
     func loadLocations() {
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -391,8 +373,8 @@ class MainViewController: UIViewController, UISearchBarDelegate {
         
         //TODO:- Ugly and unpractical, rework this whole thing. Example pass whole weatherobject instead of all these separately
         let spinViewController = WeekViewController()
-        spinViewController.longitude = self.coordinate.long
-        spinViewController.latitude = self.coordinate.lat
+        spinViewController.longitude = longitude
+        spinViewController.latitude = latitude
        
        
         spinViewController.modalPresentationStyle = .fullScreen

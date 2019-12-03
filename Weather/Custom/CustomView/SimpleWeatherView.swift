@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import MapKit
 
 class SimpleWeatherView: UIView {
     
     let drawWeatherIcon = DrawWeatherIcon()
+    let reverseLocation = ReverseLocation()
     let temperatureLabel = UILabel()
     let locLabel = UILabel()
     let iconView = UIView()
@@ -60,17 +62,18 @@ class SimpleWeatherView: UIView {
     }
     
     //MARK: LocationLabel
-    func setupLocLabel(loc: String) {
+    func setupLocLabel(location: CLLocation) {
         
         locLabel.frame = CGRect(x: 110, y: 30, width: 160, height: 30)
         locLabel.font = UIFont (name: "SFCompactText-Bold", size: 20)
         locLabel.textColor = UIColor.white
-        locLabel.text = loc.uppercased()
         addSubview(locLabel)
         
         locLabel.translatesAutoresizingMaskIntoConstraints = false
         locLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 40).isActive = true
         locLabel.leftAnchor.constraint(equalTo: temperatureLabel.rightAnchor, constant: 10).isActive = true
+        
+        reverseLocation.getPlace(location: location, label: locLabel)
         
     }
     
