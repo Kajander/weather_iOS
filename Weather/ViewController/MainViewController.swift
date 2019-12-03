@@ -264,21 +264,23 @@ class MainViewController: UIViewController, UISearchBarDelegate {
                 
                 
                 //MARK: Current weather
-                if let currentWeatherValues = currentWeather {
+                if let currentWeather = currentWeather {
                     
-                    if let temperature = currentWeatherValues.temperature {
+                    if let temperature = currentWeather.temperature {
                         let celciusTemperatureDouble = (temperature - 32) * 5 / 9
                         tempString = NSString(format: "%.1f", celciusTemperatureDouble) as String
                     }
                     
-                    if let icon = currentWeatherValues.icon {
+                    if let icon = currentWeather.icon {
+                        //DarkSky doesnt know when sun sets. Use sunsetTime from dailyWeather
                         iconString = icon
                     }
-                    
+                                        
                     if tempString != "" && iconString != "" && counter < 1 {
                         currentGroup.leave()
 
                     }
+                    
                     counter = counter + 1
                 }
                 

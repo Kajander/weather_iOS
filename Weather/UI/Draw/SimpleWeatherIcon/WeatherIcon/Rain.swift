@@ -63,7 +63,7 @@ class Rain {
      
         
         let rainX = rect.origin.x
-        let rainY = rect.origin.y
+        let rainY = rect.origin.y + 5
         let rainDrop_1Start = CGPoint(x: rainX - 10, y: rainY)
         let rainDrop_1End = CGPoint(x: rainX - 13, y: rainY + 10)
         lightRainMutablePath.move(to: rainDrop_1Start)

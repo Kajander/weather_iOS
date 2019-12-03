@@ -55,7 +55,7 @@ class DetailView: UIView {
             weekdayView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
             weekdayView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10).isActive = true
             
-            constant = constant + 60
+            constant = constant + 70
             
         }
     }
@@ -114,7 +114,7 @@ class DetailView: UIView {
         weekdayView.addSubview(weekdayLabel)
         
         weekdayLabel.topAnchor.constraint(equalTo: weekdayView.topAnchor).isActive = true
-        weekdayLabel.leadingAnchor.constraint(equalTo: weekdayView.leadingAnchor, constant: 30).isActive = true
+        weekdayLabel.leadingAnchor.constraint(equalTo: weekdayView.leadingAnchor, constant: 20).isActive = true
         
     }
     
