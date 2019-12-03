@@ -26,7 +26,7 @@ class DetailView: UIView {
     
     //MARK: SetupView
     //TODO: When dailyView has been created, use shadows or something to seperate these views visually
-    func setupView(location: CLLocation, dailyTimeList: [Date], dailyIconList: [String], dailyMinTemp: [String], dailyMaxTemp: [String]) {
+    func setupView(location: CLLocation, dailyIconList: [String], dailyMinTemp: [String], dailyMaxTemp: [String]) {
         
         backgroundColor = .clear
 
@@ -37,7 +37,7 @@ class DetailView: UIView {
             
             let weekdayView = UIView()
             
-            setupWeekdayLabel(date: dailyTimeList[i], weekdayView: weekdayView)
+            setupWeekdayLabel(i: i, weekdayView: weekdayView)
             setupMinAndMaxTempLabel(dailyMinTemp: dailyMinTemp[i], dailyMaxTemp: dailyMaxTemp[i], view: weekdayView)
             setupWeatherIcon(icon: dailyIconList[i], view: weekdayView)
             
@@ -81,16 +81,33 @@ class DetailView: UIView {
     
     
     //MARK: WeekdayLabel
-    func setupWeekdayLabel(date: Date, weekdayView: UIView) {
-        
-        let df = DateFormatter()
-        df.dateFormat = "EEEE"
-        
-        let weekdayString: String = df.string(from: date)
-        
+    func setupWeekdayLabel(i: Int, weekdayView: UIView) {
+        let today = Date()
+        let date = Calendar.current.date(byAdding: .day, value: i, to: today) ?? today
+        let weekday = Calendar.current.component(.weekday, from: date)
+
         let weekdayLabel = UILabel()
         weekdayLabel.font = UIFont(name: "ArialRoundedMTBold" ,size: 18)
-        weekdayLabel.text = weekdayString
+        
+        switch weekday {
+        case 1:
+            weekdayLabel.text = "Sunday"
+        case 2:
+        weekdayLabel.text = "Monday"
+        case 3:
+        weekdayLabel.text = "Tuesday"
+        case 4:
+        weekdayLabel.text = "Wednesday"
+        case 5:
+        weekdayLabel.text = "Thursday"
+        case 6:
+        weekdayLabel.text = "Friday"
+        case 7:
+        weekdayLabel.text = "Saturday"
+        default:
+            weekdayLabel.text = "Problems"
+        }
+        
         weekdayLabel.textColor = UIColor(red:0.05, green:0.36, blue:0.32, alpha:1.0)
         
         weekdayLabel.translatesAutoresizingMaskIntoConstraints = false

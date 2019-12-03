@@ -25,10 +25,8 @@ class MainViewController: UIViewController, UISearchBarDelegate {
     var long: Double = 0.0
     var lat: Double = 0.0
     
-    var hourlyWeatherData = [String: Any]()
     var sunriseList = [Date]()
     var sunsetList = [Date]()
-    var hourlyTimeList = [Date]()
     var dailyTimeList = [Date]()
     var dailyIconList = [String]()
     var dailyMinTemp = [String]()
@@ -301,53 +299,6 @@ class MainViewController: UIViewController, UISearchBarDelegate {
                     counter = counter + 1
                 }
                 
-                
-                //MARK: Hourly weather
-            
-                if let hourlyWeather = hourlyWeather {
-
-                    if let time = hourlyWeather.time {
-                        let timeDate = Date(timeIntervalSince1970: TimeInterval(time))
-                        self.hourlyTimeList.append(timeDate)
-                    }
-                }
-                
-                
-                //MARK: Daily weather
-                if let dailyWeather = dailyWeather {
-                  
-                    if let sunRise = dailyWeather.sunriseTime {
-                        let sunriseDate = Date(timeIntervalSince1970: TimeInterval(sunRise))
-                        self.sunriseList.append(sunriseDate)
-                        
-                    }
-                    
-                    if let sunSet = dailyWeather.sunsetTime {
-                        let sunsetDate = Date(timeIntervalSince1970: TimeInterval(sunSet))
-                        self.sunsetList.append(sunsetDate)
-                    }
-                    
-                    if let time = dailyWeather.time {
-                        let timeDate = Date(timeIntervalSince1970: TimeInterval(time))
-                        self.dailyTimeList.append(timeDate)
-                    }
-                    
-                    if let icon = dailyWeather.icon {
-                        self.dailyIconList.append(icon)
-                    }
-                    
-                    if let minTemp = dailyWeather.temperatureMin {
-                        let minTempDouble = (minTemp - 32) * 5 / 9
-                        let minTempString = NSString(format: "%.1f", minTempDouble) as String
-                        self.dailyMinTemp.append(minTempString)
-                    }
-                    
-                    if let maxTemp = dailyWeather.temperatureMax {
-                        let maxTempDouble = (maxTemp - 32) * 5 / 9
-                        let maxTempString = NSString(format: "%.1f", maxTempDouble) as String
-                        self.dailyMaxTemp.append(maxTempString)
-                    }
-                }
             }
         }
         
@@ -439,16 +390,11 @@ class MainViewController: UIViewController, UISearchBarDelegate {
     @objc func onTap() {
         
         //TODO:- Ugly and unpractical, rework this whole thing. Example pass whole weatherobject instead of all these separately
-        let spinViewController = SpinViewController()
+        let spinViewController = WeekViewController()
         spinViewController.longitude = self.coordinate.long
         spinViewController.latitude = self.coordinate.lat
-        spinViewController.sunriseList = sunriseList
-        spinViewController.sunsetList = sunsetList
-        spinViewController.hourlyTimeList = hourlyTimeList
-        spinViewController.dailyTimeList = dailyTimeList
-        spinViewController.dailyIconList = dailyIconList
-        spinViewController.dailyMinTemp = dailyMinTemp
-        spinViewController.dailyMaxTemp = dailyMaxTemp
+       
+       
         spinViewController.modalPresentationStyle = .fullScreen
         self.present(spinViewController, animated: false, completion: nil)
         

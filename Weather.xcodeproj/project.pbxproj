@@ -17,7 +17,7 @@
 		EA776DE32250E12700175AF6 /* Snow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA776DE22250E12700175AF6 /* Snow.swift */; };
 		EA833E3A231C2E9900A9310C /* WeatherDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA833E39231C2E9900A9310C /* WeatherDataHandler.swift */; };
 		EA833E3C231C513100A9310C /* SceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA833E3B231C513100A9310C /* SceneView.swift */; };
-		EA833E3E231D336A00A9310C /* SpinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA833E3D231D336A00A9310C /* SpinViewController.swift */; };
+		EA833E3E231D336A00A9310C /* WeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA833E3D231D336A00A9310C /* WeekViewController.swift */; };
 		EA84C2AE233525A10077F822 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA84C2AD233525A10077F822 /* DetailView.swift */; };
 		EA8AE96D23448EBB002A6C90 /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8AE96C23448EBB002A6C90 /* AddButton.swift */; };
 		EA8AE9772344CE5D002A6C90 /* LocationSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8AE9762344CE5D002A6C90 /* LocationSearchBar.swift */; };
@@ -42,6 +42,9 @@
 		EADB6E3522D3590800F382BC /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADB6E3422D3590800F382BC /* BackButton.swift */; };
 		EAE0149A2347D47600F56769 /* BlurEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE014992347D47600F56769 /* BlurEffectView.swift */; };
 		EAE0149C234815F600F56769 /* CancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0149B234815F600F56769 /* CancelButton.swift */; };
+		EAE2800223967CA4000C8858 /* SliderTimeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE2800123967CA4000C8858 /* SliderTimeLabel.swift */; };
+		EAE2800523967F40000C8858 /* TemperatureLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE2800423967F40000C8858 /* TemperatureLabel.swift */; };
+		EAE28007239686DD000C8858 /* SummaryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE28006239686DD000C8858 /* SummaryLabel.swift */; };
 		EAEA9680221C08DC00A70C7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA967F221C08DC00A70C7D /* AppDelegate.swift */; };
 		EAEA9685221C08DC00A70C7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAEA9683221C08DC00A70C7D /* Main.storyboard */; };
 		EAEA9688221C08DC00A70C7D /* Weather.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAEA9686221C08DC00A70C7D /* Weather.xcdatamodeld */; };
@@ -62,7 +65,7 @@
 		EA776DE22250E12700175AF6 /* Snow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snow.swift; sourceTree = "<group>"; };
 		EA833E39231C2E9900A9310C /* WeatherDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataHandler.swift; sourceTree = "<group>"; };
 		EA833E3B231C513100A9310C /* SceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneView.swift; sourceTree = "<group>"; };
-		EA833E3D231D336A00A9310C /* SpinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinViewController.swift; sourceTree = "<group>"; };
+		EA833E3D231D336A00A9310C /* WeekViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekViewController.swift; sourceTree = "<group>"; };
 		EA84C2AD233525A10077F822 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		EA8AE96C23448EBB002A6C90 /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
 		EA8AE9762344CE5D002A6C90 /* LocationSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchBar.swift; sourceTree = "<group>"; };
@@ -87,6 +90,9 @@
 		EADB6E3422D3590800F382BC /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		EAE014992347D47600F56769 /* BlurEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurEffectView.swift; sourceTree = "<group>"; };
 		EAE0149B234815F600F56769 /* CancelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelButton.swift; sourceTree = "<group>"; };
+		EAE2800123967CA4000C8858 /* SliderTimeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderTimeLabel.swift; sourceTree = "<group>"; };
+		EAE2800423967F40000C8858 /* TemperatureLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureLabel.swift; sourceTree = "<group>"; };
+		EAE28006239686DD000C8858 /* SummaryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryLabel.swift; sourceTree = "<group>"; };
 		EAEA967C221C08DC00A70C7D /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAEA967F221C08DC00A70C7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EAEA9684221C08DC00A70C7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -132,6 +138,7 @@
 		EA8AE96E2344A039002A6C90 /* CustomLabel */ = {
 			isa = PBXGroup;
 			children = (
+				EAE2800323967F1A000C8858 /* WeekVievController */,
 			);
 			path = CustomLabel;
 			sourceTree = "<group>";
@@ -173,7 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				EAC33B1E222832360066EF9A /* MainViewController.swift */,
-				EA833E3D231D336A00A9310C /* SpinViewController.swift */,
+				EA833E3D231D336A00A9310C /* WeekViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -222,6 +229,16 @@
 				EAD0D6C323201154008110B8 /* LargeMoon.swift */,
 			);
 			path = LargeWeatherIcon;
+			sourceTree = "<group>";
+		};
+		EAE2800323967F1A000C8858 /* WeekVievController */ = {
+			isa = PBXGroup;
+			children = (
+				EAE2800123967CA4000C8858 /* SliderTimeLabel.swift */,
+				EAE2800423967F40000C8858 /* TemperatureLabel.swift */,
+				EAE28006239686DD000C8858 /* SummaryLabel.swift */,
+			);
+			path = WeekVievController;
 			sourceTree = "<group>";
 		};
 		EAEA9673221C08DC00A70C7D = {
@@ -385,6 +402,7 @@
 				EAEA9688221C08DC00A70C7D /* Weather.xcdatamodeld in Sources */,
 				EAAD0E3F224BE75D0042A6D8 /* Sun.swift in Sources */,
 				EAEA9680221C08DC00A70C7D /* AppDelegate.swift in Sources */,
+				EAE2800223967CA4000C8858 /* SliderTimeLabel.swift in Sources */,
 				EAC33B1B222822370066EF9A /* ForecastService.swift in Sources */,
 				EAAD0E45224CE1F80042A6D8 /* HourlyWeather.swift in Sources */,
 				EAD6C200224F6E9500385605 /* Cloud.swift in Sources */,
@@ -395,6 +413,7 @@
 				EAA0843B23192C16009E491C /* SimpleWeatherView.swift in Sources */,
 				EA8AE9772344CE5D002A6C90 /* LocationSearchBar.swift in Sources */,
 				EA84C2AE233525A10077F822 /* DetailView.swift in Sources */,
+				EAE28007239686DD000C8858 /* SummaryLabel.swift in Sources */,
 				EA776DE32250E12700175AF6 /* Snow.swift in Sources */,
 				EA3A6D80235C6EFA0079E354 /* WeatherDelegate.swift in Sources */,
 				EAD6C206224FBC8900385605 /* CloudAndSun.swift in Sources */,
@@ -402,8 +421,9 @@
 				EAA92249237AD44000802E99 /* MainBackgroundView.swift in Sources */,
 				EA833E3A231C2E9900A9310C /* WeatherDataHandler.swift in Sources */,
 				EAF0AB43232936B5007C9CAC /* ReverseLocation.swift in Sources */,
-				EA833E3E231D336A00A9310C /* SpinViewController.swift in Sources */,
+				EA833E3E231D336A00A9310C /* WeekViewController.swift in Sources */,
 				EADB6E3522D3590800F382BC /* BackButton.swift in Sources */,
+				EAE2800523967F40000C8858 /* TemperatureLabel.swift in Sources */,
 				EAAF9FBB221C142800BA1651 /* NetworkProcessor.swift in Sources */,
 				EA1B66CC234B606D0061E388 /* SearchBarView.swift in Sources */,
 				EAD6C202224F8DA000385605 /* Moon.swift in Sources */,

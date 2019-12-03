@@ -83,7 +83,6 @@ class SceneView: UIView {
     //MARK: - Get Constant
     func getConstant(sunriseList: [Date], sunsetList: [Date], timeList: [Date], width: CGFloat) -> (constant: Int, defaultFirstSunConstant: Int, defaultFirstMoonConstant: Int) {
         
-        
         var constant = 0
         var defaultFirstSunConstant = 0
         var defaultFirstMoonConstant = 0
