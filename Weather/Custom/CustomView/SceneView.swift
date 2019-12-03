@@ -18,6 +18,7 @@ class SceneView: UIView {
     let locationLabel = UILabel()
     let backroundView = UIView()
     
+    var constant = 0
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -81,9 +82,8 @@ class SceneView: UIView {
     
     
     //MARK: - Get Constant
-    func getConstant(sunriseList: [Date], sunsetList: [Date], timeList: [Date], width: CGFloat) -> (constant: Int, defaultFirstSunConstant: Int, defaultFirstMoonConstant: Int) {
+    func getConstant(sunriseList: [Date], sunsetList: [Date], timeList: [Date], width: CGFloat) -> (defaultFirstSunConstant: Int, defaultFirstMoonConstant: Int) {
         
-        var constant = 0
         var defaultFirstSunConstant = 0
         var defaultFirstMoonConstant = 0
         
@@ -125,6 +125,7 @@ class SceneView: UIView {
 
         
         // Between sunrise and sunset
+        //TODO: - Moonconstant cant be the same as sunConstant, doesnt work right. Fix This!
         if todaySunrise < date && todaySunset > date {
             
             let sunriseToNow = Calendar.current.dateComponents([.hour, .minute], from: todaySunrise, to: date)
@@ -168,7 +169,7 @@ class SceneView: UIView {
             
         }
         
-        return (constant, defaultFirstSunConstant, defaultFirstMoonConstant)
+        return (defaultFirstSunConstant, defaultFirstMoonConstant)
     
     }
     

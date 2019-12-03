@@ -18,26 +18,14 @@ class WeekViewController: UIViewController {
     let tempLabel = TemperatureLabel()
     let summaryLabel = SummaryLabel()
     
-    
     var sunView = UIView()
     var moonView = UIView()
     let contentView = UIView()
     let scrollView = UIScrollView()
     
-    
-    var constant = 0
-    var defSunLeadingConstant = 0
-    var defMoonLeadingConstant = 0
-    
-    // Purkkaviri; Korjaa!
-    
     var longitude: CLLocationDegrees = 0.0
     var latitude: CLLocationDegrees = 0.0
-    
-    
-    
-    var iconList = [String]()
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -56,7 +44,7 @@ class WeekViewController: UIViewController {
         
         scrollView.isScrollEnabled = true
         scrollView.frame = view.frame
-        // If scrollview starts to fuck up, check this:
+        // If scrollview starts acting up, check this:
         // https://stackoverflow.com/questions/48216808/programmatic-uiscrollview-with-autolayout
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(scrollView)
@@ -197,37 +185,44 @@ class WeekViewController: UIViewController {
         
         let sunLayer = sceneView.setupSun()
         sunView.layer.addSublayer(sunLayer)
-        defSunLeadingConstant = sceneView.getConstant(sunriseList: sunriseList, sunsetList: sunsetList, timeList: timeList, width: sceneView.frame.width).defaultFirstSunConstant
+        let defSunLeadingConstant = sceneView.getConstant(sunriseList: sunriseList, sunsetList: sunsetList, timeList: timeList, width: sceneView.frame.width).defaultFirstSunConstant
         sceneView.addSubview(sunView)
-        
-        constant = sceneView.getConstant(sunriseList: sunriseList, sunsetList: sunsetList, timeList: timeList, width: sceneView.frame.width).constant
         
         sunView.center = CGPoint(x: CGFloat(defSunLeadingConstant), y: sceneView.bounds.height / 5)
         
     }
     
     func updateSunPosition(forwards: Bool, multiplier: Int) {
+        //Sliding the slider quickly moves the moons position too much
+        //Does it take too long to get the constant value?
+        let sunConstant = sceneView.constant
+
         if forwards == true {
-            sunView.center = CGPoint(x: CGFloat(defSunLeadingConstant) + CGFloat((constant * multiplier)) , y: sunView.center.y)
+            sunView.center = CGPoint(x: sunView.center.x + CGFloat(sunConstant) , y: sunView.center.y)
         }else{
-            sunView.center = CGPoint(x: CGFloat(defSunLeadingConstant) - CGFloat((-constant * multiplier)) , y: sunView.center.y)
+            sunView.center = CGPoint(x: sunView.center.x - CGFloat(sunConstant) , y: sunView.center.y)
         }
     }
     
     func setupMoon(sunriseList: [Date], sunsetList: [Date], timeList: [Date]) {
-        // CLEAN THAT DEFFFF
+
         let moonLayer = sceneView.setupMoon()
         moonView.layer.addSublayer(moonLayer)
-        defMoonLeadingConstant = sceneView.getConstant(sunriseList: sunriseList, sunsetList: sunsetList, timeList: timeList, width: sceneView.frame.width).defaultFirstMoonConstant
+        let defMoonLeadingConstant = sceneView.getConstant(sunriseList: sunriseList, sunsetList: sunsetList, timeList: timeList, width: sceneView.frame.width).defaultFirstMoonConstant
         sceneView.addSubview(moonView)
+
         moonView.center = CGPoint(x: CGFloat(defMoonLeadingConstant), y: sceneView.bounds.height / 5)
     }
     
     func updateMoonPosition(forwards: Bool, multiplier: Int) {
+        //Sliding the slider quickly moves the moons position too much
+        //Does it take too long to get the constant value?
+        let moonConstant = sceneView.constant
+
         if forwards == true {
-            moonView.center = CGPoint(x: CGFloat(defMoonLeadingConstant) + CGFloat((constant * multiplier)) , y: moonView.center.y)
+            moonView.center = CGPoint(x: moonView.center.x + CGFloat(moonConstant) , y: moonView.center.y)
         }else{
-            moonView.center = CGPoint(x: CGFloat(defMoonLeadingConstant) - CGFloat((-constant * multiplier)) , y: moonView.center.y)
+            moonView.center = CGPoint(x: moonView.center.x - CGFloat(moonConstant) , y: moonView.center.y)
         }
     }
     
@@ -271,12 +266,6 @@ class WeekViewController: UIViewController {
                     if let summary = hourlyWeather.summary {
                         if summaryList.count < 12 {
                             summaryList.append(summary)
-                        }
-                    }
-                    
-                    if let icon = hourlyWeather.icon {
-                        if self.iconList.count < 12 {
-                            self.iconList.append(icon)
                         }
                     }
                     
