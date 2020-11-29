@@ -373,7 +373,6 @@ class MainViewController: UIViewController, UISearchBarDelegate {
     //MARK: - OnTap of WeatherView
     @objc func onTap() {
         
-        //TODO:- Ugly and unpractical, rework this whole thing. Example pass whole weatherobject instead of all these separately
         let spinViewController = WeekViewController()
         spinViewController.longitude = longitude
         spinViewController.latitude = latitude

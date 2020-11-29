@@ -9,6 +9,6 @@
 import Foundation
 
 struct Constants {
-    static let forecastAPIKey = "enter your api key"
+    static let forecastAPIKey = "19ccd835b03c00a15c7e1cba45c64892"
 
 }
